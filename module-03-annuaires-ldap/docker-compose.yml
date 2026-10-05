@@ -1,0 +1,34 @@
+# Module 3 - OpenLDAP (annuaire Acme Corp)
+# Le reseau iam-net est cree par le compose du module 2 : demarrez-le avant.
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: iam-openldap
+    restart: unless-stopped
+    command: --copy-service
+    environment:
+      LDAP_ORGANISATION: Acme Corp
+      LDAP_DOMAIN: acme.lab.local
+      LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
+      LDAP_CONFIG_PASSWORD: ${LDAP_CONFIG_PASSWORD}
+      LDAP_READONLY_USER: "true"
+      LDAP_READONLY_USER_USERNAME: readonly
+      LDAP_READONLY_USER_PASSWORD: ${LDAP_READONLY_PASSWORD}
+      LDAP_TLS: "false"
+    ports:
+      - "127.0.0.1:389:389"
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+      - ./ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
+    networks:
+      - iam-net
+
+volumes:
+  ldap-data:
+  ldap-config:
+
+networks:
+  iam-net:
+    external: true
+    name: iam-net

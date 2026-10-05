@@ -1,0 +1,388 @@
+dn: ou=people,dc=acme,dc=lab,dc=local
+objectClass: organizationalUnit
+ou: people
+
+dn: ou=groups,dc=acme,dc=lab,dc=local
+objectClass: organizationalUnit
+ou: groups
+
+dn: uid=karim.benali,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: karim.benali
+cn: Karim Benali
+givenName: Karim
+sn: Benali
+mail: karim.benali@acme.lab.local
+title: Directeur General
+departmentNumber: direction
+userPassword: {SSHA}kR8qP+r09MGb53dSbo6BC9cA1pknLOC1aeAmgA==
+
+dn: uid=sophie.martin,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: sophie.martin
+cn: Sophie Martin
+givenName: Sophie
+sn: Martin
+mail: sophie.martin@acme.lab.local
+title: Responsable RH
+departmentNumber: rh
+userPassword: {SSHA}j5MdDcgz5dYhL4FzoOrMHhmcDh9Xf1dWjtxLog==
+
+dn: uid=claire.fontaine,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: claire.fontaine
+cn: Claire Fontaine
+givenName: Claire
+sn: Fontaine
+mail: claire.fontaine@acme.lab.local
+title: Gestionnaire paie
+departmentNumber: rh
+userPassword: {SSHA}RzJAye5PG8M72uiRCI+QQM2B3UoO0M/szrXewQ==
+
+dn: uid=hugo.perrin,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: hugo.perrin
+cn: Hugo Perrin
+givenName: Hugo
+sn: Perrin
+mail: hugo.perrin@acme.lab.local
+title: Charge de recrutement
+departmentNumber: rh
+userPassword: {SSHA}bmWmnLIUrNmCkM1x1MRM+kSXWOknP4hXFdvNzw==
+
+dn: uid=julie.garnier,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: julie.garnier
+cn: Julie Garnier
+givenName: Julie
+sn: Garnier
+mail: julie.garnier@acme.lab.local
+title: Assistante RH
+departmentNumber: rh
+userPassword: {SSHA}buCg6oWLG+5ABYyIqzkOup2SaNJDY7iRErT4fQ==
+
+dn: uid=lea.dubois,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: lea.dubois
+cn: Lea Dubois
+givenName: Lea
+sn: Dubois
+mail: lea.dubois@acme.lab.local
+title: Chargee de marketing digital
+departmentNumber: marketing
+userPassword: {SSHA}/kLUUfQYpoTh5uL0D6Ur4vYaGMX28kqFYN9KAg==
+
+dn: uid=thomas.bernard,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: thomas.bernard
+cn: Thomas Bernard
+givenName: Thomas
+sn: Bernard
+mail: thomas.bernard@acme.lab.local
+title: Responsable marketing
+departmentNumber: marketing
+userPassword: {SSHA}A3+zOdPYSijp4nKM+RVyVW6bJ//hdTrawXKeRg==
+
+dn: uid=camille.petit,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: camille.petit
+cn: Camille Petit
+givenName: Camille
+sn: Petit
+mail: camille.petit@acme.lab.local
+title: Community manager
+departmentNumber: marketing
+userPassword: {SSHA}yFPQU80iexmsjlBjvGEsoS3UfJuyWfxjoLQx/Q==
+
+dn: uid=antoine.moreau,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: antoine.moreau
+cn: Antoine Moreau
+givenName: Antoine
+sn: Moreau
+mail: antoine.moreau@acme.lab.local
+title: Redacteur web
+departmentNumber: marketing
+userPassword: {SSHA}N58aXxJFet1CNo4BjVP0oZ+RcpD4Ye78Dqsmaw==
+
+dn: uid=ines.lambert,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: ines.lambert
+cn: Ines Lambert
+givenName: Ines
+sn: Lambert
+mail: ines.lambert@acme.lab.local
+title: Graphiste
+departmentNumber: marketing
+userPassword: {SSHA}zwbxpBornDt4BvRuNbqZGzwlrK4nM+XnJjSMAg==
+
+dn: uid=paul.girard,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: paul.girard
+cn: Paul Girard
+givenName: Paul
+sn: Girard
+mail: paul.girard@acme.lab.local
+title: Analyste marketing
+departmentNumber: marketing
+userPassword: {SSHA}WoS+ecZRpwoqOkVqb9LvPH8x7nHBtlznO8wNuQ==
+
+dn: uid=youssef.haddad,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: youssef.haddad
+cn: Youssef Haddad
+givenName: Youssef
+sn: Haddad
+mail: youssef.haddad@acme.lab.local
+title: Commercial senior
+departmentNumber: ventes
+userPassword: {SSHA}uPyohWW/DPcHIwpIaG2cpgZLZeEdzu6A1Opk4A==
+
+dn: uid=amine.cherkaoui,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: amine.cherkaoui
+cn: Amine Cherkaoui
+givenName: Amine
+sn: Cherkaoui
+mail: amine.cherkaoui@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}jngH7cBIvHyK2D4+KTgguaz+nsgkP4SFywG70Q==
+
+dn: uid=sarah.benmoussa,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: sarah.benmoussa
+cn: Sarah Benmoussa
+givenName: Sarah
+sn: Benmoussa
+mail: sarah.benmoussa@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}lhkQV2asVLRvX387xFTlTTcC8/dljft/L3+WCA==
+
+dn: uid=lucas.faure,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: lucas.faure
+cn: Lucas Faure
+givenName: Lucas
+sn: Faure
+mail: lucas.faure@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}2IkHkrxs9ePxpXYQwioPiEbhDUgkeutxvM7DwA==
+
+dn: uid=emma.rousseau,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: emma.rousseau
+cn: Emma Rousseau
+givenName: Emma
+sn: Rousseau
+mail: emma.rousseau@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}+1nRGg0vxGNVVFNVPuXaTnw43DJM7Vtpku/MDg==
+
+dn: uid=omar.alaoui,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: omar.alaoui
+cn: Omar Alaoui
+givenName: Omar
+sn: Alaoui
+mail: omar.alaoui@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}CRp5T2t3BZ9w55ucVcciG/baUoh6d4S3XQtayA==
+
+dn: uid=manon.david,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: manon.david
+cn: Manon David
+givenName: Manon
+sn: David
+mail: manon.david@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}y2Ojvo/t19f/xsCXL6j3wSiy5/DHTVISvWRatA==
+
+dn: uid=nicolas.bonnet,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: nicolas.bonnet
+cn: Nicolas Bonnet
+givenName: Nicolas
+sn: Bonnet
+mail: nicolas.bonnet@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}Hxmvxn99stXGl/3nQIMcC/p/IiC9HnMqsxFomA==
+
+dn: uid=salma.idrissi,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: salma.idrissi
+cn: Salma Idrissi
+givenName: Salma
+sn: Idrissi
+mail: salma.idrissi@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}agUetmMrS+rtYaOHrvfDAyfu+2lfYoO9nMJFvQ==
+
+dn: uid=julien.mercier,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: julien.mercier
+cn: Julien Mercier
+givenName: Julien
+sn: Mercier
+mail: julien.mercier@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}izqqfOLE1MpBnfBKhUMRvHiLI6ZMiEBFdgXKfA==
+
+dn: uid=yasmine.tazi,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: yasmine.tazi
+cn: Yasmine Tazi
+givenName: Yasmine
+sn: Tazi
+mail: yasmine.tazi@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}MLi7xme45ha1bOFEct11MF9l3X9EufzJTxBw3Q==
+
+dn: uid=romain.chevalier,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: romain.chevalier
+cn: Romain Chevalier
+givenName: Romain
+sn: Chevalier
+mail: romain.chevalier@acme.lab.local
+title: Commercial
+departmentNumber: ventes
+userPassword: {SSHA}29CxHsuoq1wKGkZ6TLtYpZRL4cq402lQ/r5SMQ==
+
+dn: uid=aya.mansouri,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: aya.mansouri
+cn: Aya Mansouri
+givenName: Aya
+sn: Mansouri
+mail: aya.mansouri@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}yresHI0eX93kVvtuIYX0mm1rXoHaAtQH5t1nNg==
+
+dn: uid=hicham.berrada,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: hicham.berrada
+cn: Hicham Berrada
+givenName: Hicham
+sn: Berrada
+mail: hicham.berrada@acme.lab.local
+title: Responsable des ventes
+departmentNumber: ventes
+userPassword: {SSHA}B3XFS3BMrZh/GqVIJKzQrbKIgYUULaFRZzBsYQ==
+
+dn: uid=laura.simon,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: laura.simon
+cn: Laura Simon
+givenName: Laura
+sn: Simon
+mail: laura.simon@acme.lab.local
+title: Commerciale
+departmentNumber: ventes
+userPassword: {SSHA}pLQVCgzpbUBjAFETkxzlftVjDQy7YB25qyNbCg==
+
+dn: uid=nadia.roche,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: nadia.roche
+cn: Nadia Roche
+givenName: Nadia
+sn: Roche
+mail: nadia.roche@acme.lab.local
+title: Administratrice systemes
+departmentNumber: it
+userPassword: {SSHA}1QFoGsN0AU9YVejm3wN+RH73UXruShvGxUA8OA==
+
+dn: uid=kevin.andre,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: kevin.andre
+cn: Kevin Andre
+givenName: Kevin
+sn: Andre
+mail: kevin.andre@acme.lab.local
+title: Administrateur reseau
+departmentNumber: it
+userPassword: {SSHA}xdU1QHy7Qv0g/CerA2gtZoZH869gjkhQhi7wLQ==
+
+dn: uid=hamza.kettani,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: hamza.kettani
+cn: Hamza Kettani
+givenName: Hamza
+sn: Kettani
+mail: hamza.kettani@acme.lab.local
+title: Support informatique
+departmentNumber: it
+userPassword: {SSHA}nVvH1FeEVBGovspyAYfeywEcCAmcnzarDW8wDA==
+
+dn: uid=chloe.vidal,ou=people,dc=acme,dc=lab,dc=local
+objectClass: inetOrgPerson
+uid: chloe.vidal
+cn: Chloe Vidal
+givenName: Chloe
+sn: Vidal
+mail: chloe.vidal@acme.lab.local
+title: Ingenieure securite
+departmentNumber: it
+userPassword: {SSHA}1FuHsM4LcnCQsrec0aXASCOwD0o1U2WgHqcu6g==
+
+dn: cn=acme-dg,ou=groups,dc=acme,dc=lab,dc=local
+objectClass: groupOfNames
+cn: acme-dg
+member: uid=karim.benali,ou=people,dc=acme,dc=lab,dc=local
+
+dn: cn=acme-rh,ou=groups,dc=acme,dc=lab,dc=local
+objectClass: groupOfNames
+cn: acme-rh
+member: uid=sophie.martin,ou=people,dc=acme,dc=lab,dc=local
+member: uid=claire.fontaine,ou=people,dc=acme,dc=lab,dc=local
+member: uid=hugo.perrin,ou=people,dc=acme,dc=lab,dc=local
+member: uid=julie.garnier,ou=people,dc=acme,dc=lab,dc=local
+
+dn: cn=acme-marketing,ou=groups,dc=acme,dc=lab,dc=local
+objectClass: groupOfNames
+cn: acme-marketing
+member: uid=lea.dubois,ou=people,dc=acme,dc=lab,dc=local
+member: uid=thomas.bernard,ou=people,dc=acme,dc=lab,dc=local
+member: uid=camille.petit,ou=people,dc=acme,dc=lab,dc=local
+member: uid=antoine.moreau,ou=people,dc=acme,dc=lab,dc=local
+member: uid=ines.lambert,ou=people,dc=acme,dc=lab,dc=local
+member: uid=paul.girard,ou=people,dc=acme,dc=lab,dc=local
+
+dn: cn=acme-ventes,ou=groups,dc=acme,dc=lab,dc=local
+objectClass: groupOfNames
+cn: acme-ventes
+member: uid=youssef.haddad,ou=people,dc=acme,dc=lab,dc=local
+member: uid=amine.cherkaoui,ou=people,dc=acme,dc=lab,dc=local
+member: uid=sarah.benmoussa,ou=people,dc=acme,dc=lab,dc=local
+member: uid=lucas.faure,ou=people,dc=acme,dc=lab,dc=local
+member: uid=emma.rousseau,ou=people,dc=acme,dc=lab,dc=local
+member: uid=omar.alaoui,ou=people,dc=acme,dc=lab,dc=local
+member: uid=manon.david,ou=people,dc=acme,dc=lab,dc=local
+member: uid=nicolas.bonnet,ou=people,dc=acme,dc=lab,dc=local
+member: uid=salma.idrissi,ou=people,dc=acme,dc=lab,dc=local
+member: uid=julien.mercier,ou=people,dc=acme,dc=lab,dc=local
+member: uid=yasmine.tazi,ou=people,dc=acme,dc=lab,dc=local
+member: uid=romain.chevalier,ou=people,dc=acme,dc=lab,dc=local
+member: uid=aya.mansouri,ou=people,dc=acme,dc=lab,dc=local
+member: uid=hicham.berrada,ou=people,dc=acme,dc=lab,dc=local
+member: uid=laura.simon,ou=people,dc=acme,dc=lab,dc=local
+
+dn: cn=acme-it-admin,ou=groups,dc=acme,dc=lab,dc=local
+objectClass: groupOfNames
+cn: acme-it-admin
+member: uid=nadia.roche,ou=people,dc=acme,dc=lab,dc=local
+member: uid=kevin.andre,ou=people,dc=acme,dc=lab,dc=local
+member: uid=hamza.kettani,ou=people,dc=acme,dc=lab,dc=local
+member: uid=chloe.vidal,ou=people,dc=acme,dc=lab,dc=local
+
