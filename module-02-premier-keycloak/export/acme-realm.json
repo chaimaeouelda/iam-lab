@@ -327,6 +327,7 @@
       } ],
       "grafana" : [ ],
       "security-admin-console" : [ ],
+      "http://localhost:8080/apps/user_saml/saml/metadata" : [ ],
       "postman-client" : [ ],
       "admin-cli" : [ ],
       "lab-m2m" : [ ],
@@ -460,7 +461,7 @@
   "otpPolicyDigits" : 6,
   "otpPolicyLookAheadWindow" : 1,
   "otpPolicyPeriod" : 30,
-  "otpPolicyCodeReusable" : false,
+  "otpPolicyCodeReusable" : true,
   "otpSupportedApplications" : [ "totpAppFreeOTPName", "totpAppGoogleName", "totpAppMicrosoftAuthenticatorName" ],
   "localizationTexts" : { },
   "webAuthnPolicyRpEntityName" : "keycloak",
@@ -475,18 +476,20 @@
   "webAuthnPolicyAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyAcceptableAaguids" : [ ],
   "webAuthnPolicyExtraOrigins" : [ ],
-  "webAuthnPolicyPasswordlessRpEntityName" : "keycloak",
-  "webAuthnPolicyPasswordlessSignatureAlgorithms" : [ "ES256", "RS256" ],
+  "webAuthnPolicyPasswordlessRpEntityName" : "Acme Corp",
+  "webAuthnPolicyPasswordlessSignatureAlgorithms" : [ "ES256" ],
   "webAuthnPolicyPasswordlessRpId" : "",
   "webAuthnPolicyPasswordlessAttestationConveyancePreference" : "not specified",
   "webAuthnPolicyPasswordlessAuthenticatorAttachment" : "not specified",
-  "webAuthnPolicyPasswordlessRequireResidentKey" : "not specified",
+  "webAuthnPolicyPasswordlessRequireResidentKey" : "Yes",
   "webAuthnPolicyPasswordlessResidentKey" : "required",
   "webAuthnPolicyPasswordlessUserVerificationRequirement" : "required",
   "webAuthnPolicyPasswordlessCreateTimeout" : 0,
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyPasswordlessAcceptableAaguids" : [ ],
   "webAuthnPolicyPasswordlessExtraOrigins" : [ ],
+  "webAuthnPolicyPasswordlessPasskeysEnabled" : true,
+  "webAuthnPolicyPasswordlessMediation" : "conditional",
   "users" : [ {
     "id" : "6e958453-e934-4d36-9093-770e095c5428",
     "username" : "amine.cherkaoui",
@@ -606,7 +609,14 @@
     "createdTimestamp" : 1791036351483,
     "totp" : false,
     "federationLink" : "VAcOD77mRX20j5689OoAQQ",
-    "credentials" : [ ],
+    "credentials" : [ {
+      "id" : "fd1cea35-9e47-4b57-8b29-3b462fe8fb26",
+      "type" : "webauthn-passwordless",
+      "userLabel" : "Passkey (Default Label)",
+      "createdDate" : 1791713254886,
+      "secretData" : "{}",
+      "credentialData" : "{\"aaguid\":\"d3452668-01fd-4c12-926c-83a4204853aa\",\"credentialId\":\"D48ajvY038khp9KY+wF9vw==\",\"counter\":0,\"credentialPublicKey\":\"pQECAyYgASFYIIuHu5vA5UnVqkXVpKkefWrLfoNBXFwpdenPB3U8qIxpIlggS2vDnALNc9UkCck_ZXChv--J--e-yYBpxIbJxqJvSfc\",\"attestationStatementFormat\":\"none\",\"transports\":[\"internal\",\"hybrid\"]}"
+    } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
     "realmRoles" : [ "acme-it-admin", "default-roles-acme" ],
@@ -1431,6 +1441,93 @@
     "nodeReRegistrationTimeout" : -1,
     "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "acme-claims", "basic", "email" ],
     "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "0e1c4e18-9df7-486d-9f14-83e9319b7296",
+    "clientId" : "http://localhost:8080/apps/user_saml/saml/metadata",
+    "name" : "Nextcloud",
+    "description" : "",
+    "rootUrl" : "http://localhost:8080",
+    "adminUrl" : "http://localhost:8080/apps/user_saml/saml/acs",
+    "baseUrl" : "http://localhost:8080",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "http://localhost:8080/*" ],
+    "webOrigins" : [ "http://localhost:8080" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : true,
+    "protocol" : "saml",
+    "attributes" : {
+      "saml.assertion.signature" : "true",
+      "saml.force.post.binding" : "true",
+      "saml.encrypt" : "false",
+      "saml_idp_initiated_sso_url_name" : "nextcloud",
+      "saml.server.signature" : "true",
+      "saml.server.signature.keyinfo.ext" : "false",
+      "saml.signing.certificate" : "MIIE8zCCAtsCBgGhJi8dQTANBgkqhkiG9w0BAQsFADA9MTswOQYDVQQDDDJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBwcy91c2VyX3NhbWwvc2FtbC9tZXRhZGF0YTAeFw0yNjEwMTAxNDE4MDRaFw0yOTEwMTAxNDE5MzlaMD0xOzA5BgNVBAMMMmh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcHBzL3VzZXJfc2FtbC9zYW1sL21ldGFkYXRhMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0jxSaok+ez4R8IF0TbhiqH4lGpAqzQU+EgMjbmvSAXvxw4y1qLA1568BsqNTlVEC3NlEHruILHdaPkqCldx7vl0IkPOusl9srRf2+sT/nQTsAPmfBVwJsmOlWUYnyCKZYXV/UM7YgSb+O1F4bKGGycIuRlkL9s271WueyRnabrfPN0z5bR6pivnwbjbuN11E/q62cf9qkJji2gf3QJ9/N6UGfJZcvqozU+gZRCoVxrEtAtcS2cdS1qqWQc/crqLsPCSOl/YJ7qtPONIvrhZapY2Xqb39svY3Xr7Mqd/pWjpn6dYcvvwNbTPKSacMwE1p4eWfKz9pP4EPXhnZoy3YphYb91nY2+j0Tu7KS2mcVfl81o1atZvSwQ1kGVtLtcWDJ1ztC8xOhxPoQe7VEbhK+FCaCcrmNxxYF76e7rVCp3dQwfPuADRqMXThyHegWMyFMzwTr20S9nJ++qMXUxsVhtJhLLOQ+sWRmHMa3Jrtpk4UYB15Bu82BM+mHL3WXVkeal2uOQ0QvzP3tQOLETscX9sFn4qRLZL6gEFdLfSBiIbnWdWicu7qu/95wA+0iqNHDGd1u2eRWPJ2M5xBpy3d0DQbwG/wXOXrB3k5FYC2Sc0SL5tatvCK+IpA1dh+As8ytUz9pWDp/HchIEIC6SMbELjdTplS8BWoJCSuNNaOglECAwEAATANBgkqhkiG9w0BAQsFAAOCAgEAyEEVuctq5S6C5L20mlp8jSyWPnLu7wFvGCoAHyXBvk9+d5SM9e5o1cfq08DaPFnZYdpRb06ZSY7sHzQ6a7JsMiTrJpAnktx61c5GFiCUwad1bz7Pewt0wqkIUz7tEeC177u51td2hEjMnBWGAyzM6sXWLggmiPJCPfTlmXEQ0KDi2A+QV0oa3VWrF2rpCWvlfYvfeXoYmm+IzshAH8cN+Khwu4skiA6QZs14sImoht2GZX8wYpEzCAxSGkEh5I9TqfoiS81wck/4z3P3Tcw75AVjQBLMos+oWWduEtuwsUBPP0BvHzVBRg1EZxwQehh3Rc7/hGE+Rx0Z64Z2Bkxc+v1VDv8I4gIbXOdpY8Y17LtPc+SpFASu7byilHhkx1UXuGaiGnvuaRinFRaRk6goT5Gs4yBpZX6+bmh00zb5Zo81UZRopoma3xCG4qZNxrKKc4jT2k9yrCtLiw0WgJsvrkp8xELjdimHosuuquD/q+36uwnpiFFF9LEhpROa2t2F9lwQTS2PFExortSbh9k7imoFax5MpsUs9qB+7QUpWmwoXbnlQTVohTh8SB/e0+M4UYIcH8Ba5ZfFnb5iUBSoPo+7s8Zj3dEMHJgE6/7qCYnmfDTGjCs1iUvPBEYhAPRr77YflcCGtRhri7mfhcSv6f0nydyzvcGiccWlTj3YNM4=",
+      "realm_client" : "false",
+      "saml.artifact.binding.identifier" : "/Qx/2qM3dIByM/QlF5RJAgsCK/w=",
+      "saml.artifact.binding" : "false",
+      "saml.signature.algorithm" : "RSA_SHA256",
+      "saml.useMetadataDescriptorUrl" : "false",
+      "saml_force_name_id_format" : "true",
+      "saml.client.signature" : "false",
+      "saml.authnstatement" : "true",
+      "display.on.consent.screen" : "false",
+      "saml_name_id_format" : "username",
+      "saml.signing.private.key" : "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",
+      "saml.allow.ecp.flow" : "false",
+      "saml_signature_canonicalization_method" : "http://www.w3.org/2001/10/xml-exc-c14n#",
+      "saml.onetimeuse.condition" : "false",
+      "saml.server.signature.keyinfo.xmlSigKeyInfoKeyNameTransformer" : "NONE"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "62701654-ab98-4c23-9f12-0cde9716a1ec",
+      "name" : "department",
+      "protocol" : "saml",
+      "protocolMapper" : "saml-user-attribute-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "attribute.nameformat" : "Basic",
+        "user.attribute" : "\tdepartment",
+        "attribute.name" : "department"
+      }
+    }, {
+      "id" : "67c2329d-ac30-4ca9-8872-0bd09ce5e73a",
+      "name" : "email",
+      "protocol" : "saml",
+      "protocolMapper" : "saml-user-property-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "attribute.nameformat" : "Basic",
+        "user.attribute" : "email",
+        "attribute.name" : "email"
+      }
+    }, {
+      "id" : "2ece0e3c-85c1-4512-92bf-2ac3d9179b2d",
+      "name" : "username ",
+      "protocol" : "saml",
+      "protocolMapper" : "saml-user-property-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "attribute.nameformat" : "Basic",
+        "user.attribute" : "username",
+        "attribute.name" : "username "
+      }
+    } ],
+    "defaultClientScopes" : [ "saml_organization", "role_list", "AuthnContextClassRef" ],
+    "optionalClientScopes" : [ ]
   }, {
     "id" : "93cd5dfb-6c63-4020-9b3c-5dcdffecd877",
     "clientId" : "lab-cli",
@@ -2949,6 +3046,144 @@
       "userSetupAllowed" : false
     } ]
   }, {
+    "id" : "f0596b78-dd2c-44df-b9e3-e2a99ec2c473",
+    "alias" : "browser-mfa-it",
+    "description" : "Browser based authentication",
+    "providerId" : "basic-flow",
+    "topLevel" : true,
+    "builtIn" : false,
+    "authenticationExecutions" : [ {
+      "authenticator" : "auth-cookie",
+      "authenticatorFlow" : false,
+      "requirement" : "ALTERNATIVE",
+      "priority" : 10,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticator" : "auth-spnego",
+      "authenticatorFlow" : false,
+      "requirement" : "DISABLED",
+      "priority" : 20,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticator" : "identity-provider-redirector",
+      "authenticatorFlow" : false,
+      "requirement" : "ALTERNATIVE",
+      "priority" : 25,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticatorFlow" : true,
+      "requirement" : "ALTERNATIVE",
+      "priority" : 26,
+      "autheticatorFlow" : true,
+      "flowAlias" : "browser-mfa-it Organization",
+      "userSetupAllowed" : false
+    }, {
+      "authenticatorFlow" : true,
+      "requirement" : "ALTERNATIVE",
+      "priority" : 30,
+      "autheticatorFlow" : true,
+      "flowAlias" : "browser-mfa-it forms",
+      "userSetupAllowed" : false
+    } ]
+  }, {
+    "id" : "2fc39707-08fc-4794-866e-05a530ad8921",
+    "alias" : "browser-mfa-it Browser - Conditional 2FA",
+    "description" : "Flow to determine if any 2FA is required for the authentication",
+    "providerId" : "basic-flow",
+    "topLevel" : false,
+    "builtIn" : false,
+    "authenticationExecutions" : [ {
+      "authenticator" : "auth-otp-form",
+      "authenticatorFlow" : false,
+      "requirement" : "REQUIRED",
+      "priority" : 30,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticator" : "webauthn-authenticator",
+      "authenticatorFlow" : false,
+      "requirement" : "DISABLED",
+      "priority" : 40,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticator" : "auth-recovery-authn-code-form",
+      "authenticatorFlow" : false,
+      "requirement" : "DISABLED",
+      "priority" : 50,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticatorConfig" : "role-it",
+      "authenticator" : "conditional-user-role",
+      "authenticatorFlow" : false,
+      "requirement" : "REQUIRED",
+      "priority" : 51,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    } ]
+  }, {
+    "id" : "b90aceee-fb45-4102-8200-f1d8b89e650f",
+    "alias" : "browser-mfa-it Browser - Conditional Organization",
+    "description" : "Flow to determine if the organization identity-first login is to be used",
+    "providerId" : "basic-flow",
+    "topLevel" : false,
+    "builtIn" : false,
+    "authenticationExecutions" : [ {
+      "authenticator" : "conditional-user-configured",
+      "authenticatorFlow" : false,
+      "requirement" : "REQUIRED",
+      "priority" : 10,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticator" : "organization",
+      "authenticatorFlow" : false,
+      "requirement" : "ALTERNATIVE",
+      "priority" : 20,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    } ]
+  }, {
+    "id" : "aee10a93-8a2e-4778-9c4b-d01da24cc4fe",
+    "alias" : "browser-mfa-it Organization",
+    "providerId" : "basic-flow",
+    "topLevel" : false,
+    "builtIn" : false,
+    "authenticationExecutions" : [ {
+      "authenticatorFlow" : true,
+      "requirement" : "CONDITIONAL",
+      "priority" : 10,
+      "autheticatorFlow" : true,
+      "flowAlias" : "browser-mfa-it Browser - Conditional Organization",
+      "userSetupAllowed" : false
+    } ]
+  }, {
+    "id" : "ef1ca379-1a32-4f0f-83e6-ad51e6406115",
+    "alias" : "browser-mfa-it forms",
+    "description" : "Username, password, otp and other auth forms.",
+    "providerId" : "basic-flow",
+    "topLevel" : false,
+    "builtIn" : false,
+    "authenticationExecutions" : [ {
+      "authenticator" : "auth-username-password-form",
+      "authenticatorFlow" : false,
+      "requirement" : "REQUIRED",
+      "priority" : 10,
+      "autheticatorFlow" : false,
+      "userSetupAllowed" : false
+    }, {
+      "authenticatorFlow" : true,
+      "requirement" : "CONDITIONAL",
+      "priority" : 20,
+      "autheticatorFlow" : true,
+      "flowAlias" : "browser-mfa-it Browser - Conditional 2FA",
+      "userSetupAllowed" : false
+    } ]
+  }, {
     "id" : "d514d7b6-cc6a-4cb2-9c82-37e6d97af76e",
     "alias" : "clients",
     "description" : "Base authentication for clients",
@@ -3215,6 +3450,12 @@
     "config" : {
       "update.profile.on.first.login" : "missing"
     }
+  }, {
+    "id" : "8455651c-e47a-45d1-9e43-58ff26733d9e",
+    "alias" : "role-it",
+    "config" : {
+      "condUserRole" : "acme-it-admin"
+    }
   } ],
   "requiredActions" : [ {
     "alias" : "TERMS_AND_CONDITIONS",
@@ -3329,7 +3570,7 @@
     "priority" : 1000,
     "config" : { }
   } ],
-  "browserFlow" : "browser",
+  "browserFlow" : "browser-mfa-it",
   "registrationFlow" : "registration",
   "directGrantFlow" : "direct grant",
   "resetCredentialsFlow" : "reset credentials",
@@ -3338,13 +3579,18 @@
   "firstBrokerLoginFlow" : "first broker login",
   "attributes" : {
     "cibaBackchannelTokenDeliveryMode" : "poll",
-    "cibaExpiresIn" : "120",
     "cibaAuthRequestedUserHint" : "login_hint",
-    "oauth2DeviceCodeLifespan" : "600",
     "oauth2DevicePollingInterval" : "5",
-    "parRequestUriLifespan" : "60",
+    "clientOfflineSessionMaxLifespan" : "0",
+    "clientSessionIdleTimeout" : "0",
+    "clientOfflineSessionIdleTimeout" : "0",
     "cibaInterval" : "5",
-    "realmReusableOtpCode" : "false"
+    "realmReusableOtpCode" : "true",
+    "cibaExpiresIn" : "120",
+    "oauth2DeviceCodeLifespan" : "600",
+    "parRequestUriLifespan" : "60",
+    "clientSessionMaxLifespan" : "0",
+    "scimApiEnabled" : "false"
   },
   "keycloakVersion" : "26.7.0",
   "userManagedAccessAllowed" : false,
