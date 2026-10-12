@@ -1,0 +1,18 @@
+# Module 7 - API Flask qui verifie les roles du JWT
+services:
+  api:
+    image: python:3.12-slim
+    container_name: iam-api
+    working_dir: /app
+    command: sh -c "pip install --no-cache-dir flask 'pyjwt[crypto]' requests && python app.py"
+    ports:
+      - "5000:5000"
+    extra_hosts:
+      - "keycloak.lab.local:host-gateway"
+    environment:
+      ISSUER: https://keycloak.lab.local/realms/acme
+      AUDIENCE: acme-api
+      CA_BUNDLE: /certs/rootCA.pem
+    volumes:
+      - ./api:/app:ro
+      - ../certs/rootCA.pem:/certs/rootCA.pem:ro

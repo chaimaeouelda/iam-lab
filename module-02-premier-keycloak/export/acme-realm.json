@@ -51,7 +51,13 @@
       "id" : "b5edad10-dafa-4cbc-b335-beed54579f70",
       "name" : "acme-it-admin",
       "description" : "",
-      "composite" : false,
+      "composite" : true,
+      "composites" : {
+        "client" : {
+          "grafana" : [ "admin" ],
+          "acme-api" : [ "admin" ]
+        }
+      },
       "clientRole" : false,
       "containerId" : "da9758b2-90bd-4e17-ae6a-0f0b748ed756",
       "attributes" : { }
@@ -75,7 +81,12 @@
       "id" : "36fffbf9-56a4-4a75-a1de-7becfda14db5",
       "name" : "acme-ventes",
       "description" : "",
-      "composite" : false,
+      "composite" : true,
+      "composites" : {
+        "client" : {
+          "acme-api" : [ "reports-write" ]
+        }
+      },
       "clientRole" : false,
       "containerId" : "da9758b2-90bd-4e17-ae6a-0f0b748ed756",
       "attributes" : { }
@@ -83,7 +94,12 @@
       "id" : "8d3c87b0-c3ad-45e0-a092-bde4b2acede6",
       "name" : "acme-marketing",
       "description" : "",
-      "composite" : false,
+      "composite" : true,
+      "composites" : {
+        "client" : {
+          "grafana" : [ "editor" ]
+        }
+      },
       "clientRole" : false,
       "containerId" : "da9758b2-90bd-4e17-ae6a-0f0b748ed756",
       "attributes" : { }
@@ -111,6 +127,8 @@
       "composites" : {
         "realm" : [ "offline_access", "acme-employe", "uma_authorization" ],
         "client" : {
+          "grafana" : [ "viewer" ],
+          "acme-api" : [ "reports-read" ],
           "account" : [ "manage-account", "view-profile" ]
         }
       },
@@ -122,6 +140,20 @@
       "name" : "offline_access",
       "description" : "${role_offline-access}",
       "composite" : false,
+      "clientRole" : false,
+      "containerId" : "da9758b2-90bd-4e17-ae6a-0f0b748ed756",
+      "attributes" : { }
+    }, {
+      "id" : "802b3c33-a061-4d52-977c-f677defc8a76",
+      "name" : "acme-manager",
+      "description" : "Responsable d'equipe",
+      "composite" : true,
+      "composites" : {
+        "client" : {
+          "grafana" : [ "editor" ],
+          "acme-api" : [ "reports-write" ]
+        }
+      },
       "clientRole" : false,
       "containerId" : "da9758b2-90bd-4e17-ae6a-0f0b748ed756",
       "attributes" : { }
@@ -325,8 +357,64 @@
         "containerId" : "0bcca578-d67f-4636-92dd-6303a8f971a7",
         "attributes" : { }
       } ],
-      "grafana" : [ ],
+      "grafana" : [ {
+        "id" : "ff90d93c-9036-4b38-940c-776c01f04ced",
+        "name" : "viewer",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      }, {
+        "id" : "eb127d77-950a-4459-97b7-044256e315a0",
+        "name" : "admin",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      }, {
+        "id" : "41e5cf74-e27f-4c61-b775-ba56177f1a7a",
+        "name" : "editor",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      } ],
       "security-admin-console" : [ ],
+      "acme-api" : [ {
+        "id" : "846286e6-4134-46b1-a733-4932bef5a2dc",
+        "name" : "reports-read",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "656c2420-f05a-4181-b770-190951173cc7",
+        "attributes" : { }
+      }, {
+        "id" : "2c09ebe3-aed3-4697-bcc3-ddfa33850145",
+        "name" : "uma_protection",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "656c2420-f05a-4181-b770-190951173cc7",
+        "attributes" : { }
+      }, {
+        "id" : "9106e48a-9109-4d9e-acb0-549d60e33bdd",
+        "name" : "admin",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "656c2420-f05a-4181-b770-190951173cc7",
+        "attributes" : { }
+      }, {
+        "id" : "fa6950fd-6eb7-40e2-8b25-c5955c5c377c",
+        "name" : "reports-write",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "656c2420-f05a-4181-b770-190951173cc7",
+        "attributes" : { }
+      } ],
       "http://localhost:8080/apps/user_saml/saml/metadata" : [ ],
       "postman-client" : [ ],
       "admin-cli" : [ ],
@@ -719,7 +807,7 @@
     "credentials" : [ ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "acme-ventes", "default-roles-acme" ],
+    "realmRoles" : [ "acme-ventes", "default-roles-acme", "acme-manager" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -1148,6 +1236,23 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "eefa5bda-487f-411b-b376-ab36d975d5d7",
+    "username" : "service-account-acme-api",
+    "emailVerified" : false,
+    "enabled" : true,
+    "createdTimestamp" : 1791752599641,
+    "totp" : false,
+    "serviceAccountClientId" : "acme-api",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "clientRoles" : {
+      "acme-api" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
     "id" : "67a55db2-dcfa-4916-bc7b-c582410aa3fc",
     "username" : "service-account-lab-m2m",
     "emailVerified" : false,
@@ -1183,7 +1288,7 @@
     "credentials" : [ ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "acme-rh", "default-roles-acme" ],
+    "realmRoles" : [ "acme-rh", "default-roles-acme", "acme-manager" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -1208,7 +1313,7 @@
     "credentials" : [ ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "acme-marketing", "default-roles-acme" ],
+    "realmRoles" : [ "acme-marketing", "default-roles-acme", "acme-manager" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
@@ -1343,6 +1448,116 @@
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "basic", "email" ],
     "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "656c2420-f05a-4181-b770-190951173cc7",
+    "clientId" : "acme-api",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "NoJs58Y1sFXMLuWwiPziAuMDZ7MZhhhYl426SYn8PGcv15OQcpURmRRjzmUXCge3sBEqOFBf7btntCcGVFloWu",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ "/*" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : false,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "authorizationServicesEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "realm_client" : "false",
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1791752599",
+      "backchannel.logout.session.required" : "true",
+      "standard.token.exchange.enabled" : "false",
+      "oauth2.jwt.authorization.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false",
+      "dpop.bound.access.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "service_account", "acr", "roles", "profile", "basic", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ],
+    "authorizationSettings" : {
+      "allowRemoteResourceManagement" : true,
+      "policyEnforcementMode" : "ENFORCING",
+      "resources" : [ {
+        "name" : "rapport-financier",
+        "type" : "urn:acme:report",
+        "ownerManagedAccess" : false,
+        "displayName" : "Rapport financier",
+        "attributes" : { },
+        "uris" : [ "/reports/finance" ],
+        "scopes" : [ {
+          "name" : "view"
+        }, {
+          "name" : "edit"
+        } ],
+        "icon_uri" : ""
+      } ],
+      "policies" : [ {
+        "name" : "role-dg-ou-rh",
+        "description" : "DG ou RH",
+        "type" : "role",
+        "logic" : "POSITIVE",
+        "decisionStrategy" : "UNANIMOUS",
+        "config" : {
+          "fetchRoles" : "true",
+          "roles" : "[{\"id\":\"acme-rh\",\"required\":false},{\"id\":\"acme-dg\",\"required\":false}]"
+        }
+      }, {
+        "name" : "departement-rh",
+        "description" : "",
+        "type" : "regex",
+        "logic" : "POSITIVE",
+        "decisionStrategy" : "UNANIMOUS",
+        "config" : {
+          "targetContextAttributes" : "false",
+          "pattern" : "rh",
+          "targetClaim" : "department"
+        }
+      }, {
+        "name" : "perm-voir-rapport",
+        "description" : "",
+        "type" : "scope",
+        "logic" : "POSITIVE",
+        "decisionStrategy" : "UNANIMOUS",
+        "config" : {
+          "scopes" : "[\"view\"]",
+          "applyPolicies" : "[\"role-dg-ou-rh\"]"
+        }
+      }, {
+        "name" : "perm-modifier-rapport",
+        "description" : "",
+        "type" : "scope",
+        "logic" : "POSITIVE",
+        "decisionStrategy" : "UNANIMOUS",
+        "config" : {
+          "scopes" : "[\"edit\"]",
+          "applyPolicies" : "[\"departement-rh\"]"
+        }
+      } ],
+      "scopes" : [ {
+        "name" : "view",
+        "iconUri" : ""
+      }, {
+        "name" : "edit",
+        "iconUri" : ""
+      } ],
+      "decisionStrategy" : "UNANIMOUS"
+    }
   }, {
     "id" : "360bbf42-aac9-466c-89a0-d17efe5d7b44",
     "clientId" : "admin-cli",
@@ -1565,7 +1780,7 @@
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
-    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "basic", "email" ],
+    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "acme-claims", "basic", "email" ],
     "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "1409903c-2f42-4460-ae5a-ae8bb3109890",
@@ -1837,14 +2052,33 @@
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
       "consentRequired" : false,
       "config" : {
+        "aggregate.attrs" : "false",
         "introspection.token.claim" : "true",
+        "multivalued" : "false",
         "userinfo.token.claim" : "true",
-        "user.attribute" : "\tdepartment",
+        "user.attribute" : "department",
         "id.token.claim" : "true",
         "lightweight.claim" : "false",
         "access.token.claim" : "true",
         "claim.name" : "department",
         "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "55700d23-819d-4acb-bba4-4449344c4c48",
+      "name" : "grafana-roles",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-client-role-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "introspection.token.claim" : "true",
+        "multivalued" : "true",
+        "userinfo.token.claim" : "true",
+        "id.token.claim" : "true",
+        "lightweight.claim" : "false",
+        "access.token.claim" : "true",
+        "claim.name" : "grafana_roles",
+        "jsonType.label" : "String",
+        "usermodel.clientRoleMapping.clientId" : "grafana"
       }
     } ]
   }, {
@@ -2650,12 +2884,12 @@
         "usersDn" : [ "ou=people,dc=acme,dc=lab,dc=local" ],
         "cachePolicy" : [ "DEFAULT" ],
         "useKerberosForPasswordAuthentication" : [ "false" ],
-        "lastSync_FULL" : [ "1791293862" ],
+        "lastSync_FULL" : [ "1791797158" ],
         "importEnabled" : [ "true" ],
         "enabled" : [ "true" ],
         "changedSyncPeriod" : [ "-1" ],
-        "bindCredential" : [ "hajar2004" ],
         "bindDn" : [ "cn=readonly,dc=acme,dc=lab,dc=local" ],
+        "bindCredential" : [ "hajar2004" ],
         "usernameLDAPAttribute" : [ "uid" ],
         "vendor" : [ "other" ],
         "uuidLDAPAttribute" : [ "entryUUID" ],
