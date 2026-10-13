@@ -1,0 +1,18 @@
+# Module 8 - CLI jml.py (Joiner / Mover / Leaver) executee dans un conteneur
+services:
+  jml:
+    build: .
+    entrypoint: ["python", "jml.py"]
+    profiles: ["tools"]
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - ../certs/rootCA.pem:/certs/rootCA.pem:ro
+    extra_hosts:
+      - "keycloak.lab.local:host-gateway"
+    environment:
+      KC_URL: https://keycloak.lab.local
+      KC_REALM: acme
+      JML_CLIENT_ID: jml-cli
+      JML_CLIENT_SECRET: ${JML_CLIENT_SECRET}
+      REQUESTS_CA_BUNDLE: /certs/rootCA.pem

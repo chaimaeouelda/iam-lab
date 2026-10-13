@@ -159,6 +159,7 @@
       "attributes" : { }
     } ],
     "client" : {
+      "jml-cli" : [ ],
       "lab-cli" : [ ],
       "realm-management" : [ {
         "id" : "22c517e0-a30e-4066-a865-de0f63861285",
@@ -357,31 +358,6 @@
         "containerId" : "0bcca578-d67f-4636-92dd-6303a8f971a7",
         "attributes" : { }
       } ],
-      "grafana" : [ {
-        "id" : "ff90d93c-9036-4b38-940c-776c01f04ced",
-        "name" : "viewer",
-        "description" : "",
-        "composite" : false,
-        "clientRole" : true,
-        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
-        "attributes" : { }
-      }, {
-        "id" : "eb127d77-950a-4459-97b7-044256e315a0",
-        "name" : "admin",
-        "description" : "",
-        "composite" : false,
-        "clientRole" : true,
-        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
-        "attributes" : { }
-      }, {
-        "id" : "41e5cf74-e27f-4c61-b775-ba56177f1a7a",
-        "name" : "editor",
-        "description" : "",
-        "composite" : false,
-        "clientRole" : true,
-        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
-        "attributes" : { }
-      } ],
       "security-admin-console" : [ ],
       "acme-api" : [ {
         "id" : "846286e6-4134-46b1-a733-4932bef5a2dc",
@@ -415,9 +391,6 @@
         "containerId" : "656c2420-f05a-4181-b770-190951173cc7",
         "attributes" : { }
       } ],
-      "http://localhost:8080/apps/user_saml/saml/metadata" : [ ],
-      "postman-client" : [ ],
-      "admin-cli" : [ ],
       "lab-m2m" : [ ],
       "account-console" : [ ],
       "broker" : [ {
@@ -429,6 +402,34 @@
         "containerId" : "e00508d7-b1ba-4f8e-9117-36b1d5e22667",
         "attributes" : { }
       } ],
+      "grafana" : [ {
+        "id" : "ff90d93c-9036-4b38-940c-776c01f04ced",
+        "name" : "viewer",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      }, {
+        "id" : "eb127d77-950a-4459-97b7-044256e315a0",
+        "name" : "admin",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      }, {
+        "id" : "41e5cf74-e27f-4c61-b775-ba56177f1a7a",
+        "name" : "editor",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "816f4e7c-cabb-4cf7-92cd-aec3518373e5",
+        "attributes" : { }
+      } ],
+      "http://localhost:8080/apps/user_saml/saml/metadata" : [ ],
+      "postman-client" : [ ],
+      "admin-cli" : [ ],
       "account" : [ {
         "id" : "67a55a1a-b347-4f3b-bbac-0dad5142cdc5",
         "name" : "view-consent",
@@ -507,6 +508,15 @@
     }
   },
   "groups" : [ {
+    "id" : "c992cb81-45bd-40d2-b364-9662135f13fa",
+    "name" : "jml-managed",
+    "description" : "",
+    "path" : "/jml-managed",
+    "subGroups" : [ ],
+    "attributes" : { },
+    "realmRoles" : [ ],
+    "clientRoles" : { }
+  }, {
     "id" : "3e1ac549-3002-4b31-82b7-5e57c2839afa",
     "name" : "Marketing",
     "description" : "",
@@ -579,6 +589,28 @@
   "webAuthnPolicyPasswordlessPasskeysEnabled" : true,
   "webAuthnPolicyPasswordlessMediation" : "conditional",
   "users" : [ {
+    "id" : "bdaf2482-6b9e-4a63-8f97-d642c2105519",
+    "username" : "adam.perrot",
+    "firstName" : "Adam",
+    "lastName" : "Perrot",
+    "email" : "adam.perrot@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : true,
+    "createdTimestamp" : 1791917963265,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "8a212983-895a-43bb-9d84-a8432d56ce57",
+      "type" : "password",
+      "createdDate" : 1791917963303,
+      "secretData" : "{\"value\":\"b8FAPHW6NXUJY9dKd0A49n+fJQzgp9C9GYamJtExi84=\",\"salt\":\"tq/yGaSfaZlnCVVWqfe4YQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/RH", "/jml-managed" ]
+  }, {
     "id" : "6e958453-e934-4d36-9093-770e095c5428",
     "username" : "amine.cherkaoui",
     "firstName" : "Amine",
@@ -736,6 +768,28 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "8e8fa8a7-f268-40eb-979d-3b951f7220ab",
+    "username" : "clara.morel",
+    "firstName" : "Clara",
+    "lastName" : "Morel",
+    "email" : "clara.morel@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : true,
+    "createdTimestamp" : 1791917962768,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "19a207a9-dbb3-43cc-a41b-64e5d9bb0ceb",
+      "type" : "password",
+      "createdDate" : 1791917962833,
+      "secretData" : "{\"value\":\"be2hzMtriUbuzCinjxATEDP5YWdBFi9/X+Gh9CAe+Lw=\",\"salt\":\"IHVgnOIsgOo9fmEt1diCxg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Ventes", "/jml-managed" ]
+  }, {
     "id" : "e0d05157-c0e5-4bfe-be08-7bb1db73bcc1",
     "username" : "emma.rousseau",
     "firstName" : "Emma",
@@ -860,6 +914,28 @@
     "realmRoles" : [ "acme-marketing", "default-roles-acme" ],
     "notBefore" : 0,
     "groups" : [ ]
+  }, {
+    "id" : "2476ff82-df43-4f27-a1b7-e3ceacfee8bb",
+    "username" : "jules.henry",
+    "firstName" : "Jules",
+    "lastName" : "Henry",
+    "email" : "jules.henry@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : true,
+    "createdTimestamp" : 1791917999151,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "a4ac0b78-4fd0-40c5-9682-98385eae041c",
+      "type" : "password",
+      "createdDate" : 1791917999182,
+      "secretData" : "{\"value\":\"smmpaPqB64iTewv/uGPgKh5waYtGW0k1S53qpUfGRZc=\",\"salt\":\"GToizE3UD7Kn8e4kiXQrmA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Marketing", "/jml-managed" ]
   }, {
     "id" : "ad18ac47-5ed3-4bfc-a337-fde46818b369",
     "username" : "julie.garnier",
@@ -1011,6 +1087,28 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "eea11b9d-172c-41fd-818a-bc3c8caa9a00",
+    "username" : "lina.fabre",
+    "firstName" : "Lina",
+    "lastName" : "Fabre",
+    "email" : "lina.fabre@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : true,
+    "createdTimestamp" : 1791917963118,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "d8b98438-e9aa-4e55-8607-461f4cd68dd5",
+      "type" : "password",
+      "createdDate" : 1791917963171,
+      "secretData" : "{\"value\":\"AGyooRSDsJENAVd4nlZhnYcuqV0Y6oYXVlEbXN2t8Vc=\",\"salt\":\"Ckqq/OmFDpogwQY8UfmUGw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Marketing", "/jml-managed" ]
+  }, {
     "id" : "2fc870c7-811f-4666-99fd-8a43f2db3024",
     "username" : "lucas.faure",
     "firstName" : "Lucas",
@@ -1110,6 +1208,28 @@
     "realmRoles" : [ "acme-ventes", "default-roles-acme" ],
     "notBefore" : 0,
     "groups" : [ ]
+  }, {
+    "id" : "7d01338a-0dae-4618-8a89-dd442a74c925",
+    "username" : "nora.benali",
+    "firstName" : "Nora",
+    "lastName" : "Benali",
+    "email" : "nora.benali@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : false,
+    "createdTimestamp" : 1791917238093,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "7c6611d6-4cc4-4e1c-ba14-d207a0f30ac7",
+      "type" : "password",
+      "createdDate" : 1791917238165,
+      "secretData" : "{\"value\":\"3jzKb29VRxhrcy+glVrnqwseu5zp93B/1NAdw3jR1dk=\",\"salt\":\"5Ns9kotm1KZrJbqqAnmBmA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Ventes", "/jml-managed" ]
   }, {
     "id" : "f18819c7-e2a0-4e10-999f-94beb43c284d",
     "username" : "omar.alaoui",
@@ -1211,6 +1331,28 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "5426aec9-1995-4363-85ac-8e08f752ed0a",
+    "username" : "samir.khaldi",
+    "firstName" : "Samir",
+    "lastName" : "Khaldi",
+    "email" : "samir.khaldi@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : true,
+    "createdTimestamp" : 1791917962598,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "e1677953-a548-4160-bd97-d216449bcb57",
+      "type" : "password",
+      "createdDate" : 1791917962651,
+      "secretData" : "{\"value\":\"w8GjD2mN6USaPXGYB7M5U4G4h3wN3wbGq7xjnZ2nwpo=\",\"salt\":\"zWUMN7TPEnijAxGSNaw9Vg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Ventes", "/jml-managed" ]
+  }, {
     "id" : "f0b0c06c-aef1-4bc4-b673-24895617f5a8",
     "username" : "sarah.benmoussa",
     "firstName" : "Sarah",
@@ -1249,6 +1391,23 @@
     "realmRoles" : [ "default-roles-acme" ],
     "clientRoles" : {
       "acme-api" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "d48e603f-929f-47a4-a15a-a47d79727203",
+    "username" : "service-account-jml-cli",
+    "emailVerified" : false,
+    "enabled" : true,
+    "createdTimestamp" : 1791915198021,
+    "totp" : false,
+    "serviceAccountClientId" : "jml-cli",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "clientRoles" : {
+      "realm-management" : [ "query-groups", "view-clients", "view-users", "view-realm", "manage-users", "query-users" ]
     },
     "notBefore" : 0,
     "groups" : [ ]
@@ -1316,6 +1475,28 @@
     "realmRoles" : [ "acme-marketing", "default-roles-acme", "acme-manager" ],
     "notBefore" : 0,
     "groups" : [ ]
+  }, {
+    "id" : "efa2a390-8372-4d13-8b8a-f8b3d5fd26f4",
+    "username" : "yanis.leroy",
+    "firstName" : "Yanis",
+    "lastName" : "Leroy",
+    "email" : "yanis.leroy@acme.lab.local",
+    "emailVerified" : true,
+    "enabled" : false,
+    "createdTimestamp" : 1791917962933,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "4242aaab-636b-441f-bdc5-e8419c1a8f7c",
+      "type" : "password",
+      "createdDate" : 1791917963024,
+      "secretData" : "{\"value\":\"rKr1yU8N4fGiKc3yRiaDPKlIl+WUqygrBu6+Uzmk5yQ=\",\"salt\":\"yF14v87aKAInxf9BOUGZTQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "default-roles-acme" ],
+    "notBefore" : 0,
+    "groups" : [ "/Ventes", "/jml-managed" ]
   }, {
     "id" : "816c23c7-4ab9-47e4-b7ad-8a13425997e3",
     "username" : "yasmine.tazi",
@@ -1743,6 +1924,47 @@
     } ],
     "defaultClientScopes" : [ "saml_organization", "role_list", "AuthnContextClassRef" ],
     "optionalClientScopes" : [ ]
+  }, {
+    "id" : "a0cadc18-56e5-4967-badb-d1a710f1641c",
+    "clientId" : "jml-cli",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "vSocjYeCiuBVHDAF5Wd3mC9Qoyr4z1pvLP0W9sRe5677JgrueMbTPQ9Cau08twML5a40sPpGWrGlrik16WFIXJ",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ "/*" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : false,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "realm_client" : "false",
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1791916416",
+      "backchannel.logout.session.required" : "true",
+      "standard.token.exchange.enabled" : "false",
+      "oauth2.jwt.authorization.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false",
+      "dpop.bound.access.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "service_account", "acr", "roles", "profile", "basic", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "93cd5dfb-6c63-4020-9b3c-5dcdffecd877",
     "clientId" : "lab-cli",
