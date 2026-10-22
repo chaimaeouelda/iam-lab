@@ -1,0 +1,16 @@
+services:
+  dashboard-data:
+    image: nginx:alpine
+    container_name: iam-dashboard-data
+    restart: unless-stopped
+    ports:
+      - "8090:80"
+    volumes:
+      - ./www:/usr/share/nginx/html:ro
+    networks:
+      - iam-net
+
+networks:
+  iam-net:
+    external: true
+    name: iam-net

@@ -14,6 +14,7 @@ services:
       GF_SERVER_ROOT_URL: http://localhost:3000
       GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
       GF_AUTH_GENERIC_OAUTH_NAME: Keycloak
+      GF_INSTALL_PLUGINS: "yesoreyeram-infinity-datasource"
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GRAFANA_CLIENT_SECRET}
       GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email
@@ -28,6 +29,15 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
       - ../certs/rootCA.pem:/etc/ssl/mkcert/rootCA.pem:ro
+    networks:
+      - default
+      - iam-net
 
 volumes:
   grafana-data:
+
+networks:
+  default:
+  iam-net:
+    external: true
+    name: iam-net

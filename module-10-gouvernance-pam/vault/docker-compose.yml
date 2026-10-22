@@ -1,0 +1,19 @@
+# Module 10 - Vault (mode serveur, stockage fichier) pour le lab IAM
+services:
+  vault:
+    image: hashicorp/vault:1.18
+    container_name: vault
+    command: server
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8200:8200"
+    environment:
+      VAULT_ADDR: http://127.0.0.1:8200
+    volumes:
+      - ./config:/vault/config:ro
+      - vault-data:/vault/file
+      - vault-logs:/vault/logs
+
+volumes:
+  vault-data:
+  vault-logs:
