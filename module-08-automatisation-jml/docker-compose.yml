@@ -2,7 +2,7 @@
 services:
   jml:
     build: .
-    entrypoint: ["python", "jml.py"]
+    entrypoint: ["python", "src/jml.py"]
     profiles: ["tools"]
     working_dir: /app
     volumes:

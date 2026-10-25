@@ -1,16 +1,19 @@
-﻿# Capstone : gouvernance, PAM et certif
+﻿# Module 10 : Capstone - gouvernance, PAM et certification
 
-Durée estimée : ~10 h
+Duree : ~10 h
 
-## Objectifs
+## Realise
+- [x] Vault deploye en complement (mode dev), secrets stockes, jeton PAM a duree de vie limitee
+- [x] Revue d'acces trimestrielle simulee a partir du rapport du module 8
+- [x] Comparatif Keycloak / Entra ID redige (concepts communs, differences d'interface)
+- [x] Depot final publie sur GitHub avec architecture et retour d'experience
 
-## Tâches
+## Fichiers
+- `vault/docker-compose.yml`, `vault/.env.example`
+- `revue-acces-T4-2026.csv`, `revue-acces-T4-2026.md`
+- `entra-id-comparaison.md`
+- `schemas/architecture.png` : schema des trois couches de l'infrastructure
 
-- [ ] Tâche 1
-- [ ] Tâche 2
-- [ ] Tâche 3
-- [ ] Tâche 4
-- [ ] Tâche 5
-
-## Notes
-
+## Portfolio final
+Voir le `README.md` a la racine du depot pour la vue d'ensemble des 10 modules, et
+`retour-experience.md` pour le bilan complet du projet.

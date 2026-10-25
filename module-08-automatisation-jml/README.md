@@ -1,44 +1,31 @@
-﻿# Module 8 : automatisation du cycle de vie (JML)
+﻿# Module 8 : Automatisation et cycle de vie (JML)
 
-## Outil : jml.py
-CLI Python qui pilote l'API Admin de Keycloak (realm acme) avec un compte de service dedie
-(client `jml-cli`, droits limites a realm-management).
+Duree : ~5 h
 
-| Commande | Role |
-|---|---|
-| `joiner`  | Creer un utilisateur local et l'ajouter a son groupe de departement |
-| `mover`   | Changer de departement (ajoute le nouveau groupe, puis retire l'ancien) |
-| `leaver`  | Desactiver le compte et couper ses sessions |
-| `sync`    | Synchroniser un CSV RH (arrivees, mutations, departs) |
-| `report`  | Exporter le CSV "qui a acces a quoi" |
+## Realise
+- [x] CLI Python `jml.py` : creation d'utilisateur (Joiner)
+- [x] Changement de departement (Mover), avec ajout avant retrait du groupe (jamais sans acces)
+- [x] Desactivation et coupure de sessions (Leaver)
+- [x] Lecture et synchronisation d'un CSV RH en masse
+- [x] Export du rapport "qui a acces a quoi" (`access-report.csv`)
 
-Toutes les commandes d'ecriture acceptent `--dry-run`.
+## Fichiers
+- `jml.py` : CLI complete (joiner, mover, leaver, sync, report)
+- `test_jml.py` : 19 tests unitaires, avec une fausse API Keycloak en memoire
+- `rh.csv`, `rh-v2.csv` : exemples de fichiers RH pour la synchronisation
 
-## Principes
-- **Idempotence** : relancer une commande ne change rien si l'etat est deja correct.
-- **Perimetre** : seuls les comptes du groupe `jml-managed` sont modifies. Les comptes de l'annuaire
-  (LDAP en lecture seule) sont refuses.
-- **Secrets** : le secret du client est dans `.env` (ignore par Git) ; les mots de passe temporaires
-  sont affiches une seule fois et jamais stockes.
+## Principes de conception
+- Idempotence : relancer une commande sans changement ne fait rien.
+- Perimetre limite : seuls les comptes du groupe `jml-managed` sont modifies, jamais les
+  comptes de l'annuaire LDAP.
+- Compte de service dedie (`jml-cli`), avec uniquement les droits `realm-management`
+  necessaires (pas le mot de passe administrateur).
 
-## Utilisation
-    docker compose build jml
-    function jml { docker compose run --rm jml @args }
-    jml sync --csv rh.csv --dry-run
-    jml sync --csv rh.csv
-    jml report --out access-report.csv
+![Cycle JML](diagrams/cycle-de-vie-jml.png)
 
-## Tests
-    docker compose run --rm --entrypoint python jml -m pytest -q
-Les tests utilisent une fausse API Keycloak : ils verifient l'idempotence, le refus des comptes LDAP,
-le mode --dry-run, la synchronisation CSV et le rapport.
 
-## Limites connues
-- Une mutation ne coupe pas les sessions : les jetons deja emis gardent leurs anciens roles
-  jusqu'a expiration (5 minutes).
-- Les comptes de l'annuaire se gerent dans l'annuaire (LDIF), pas avec cet outil.
-- Les mutations vers IT ou Direction ne sont pas gerees (groupes locaux RH, Marketing, Ventes).
-- Pas de suppression definitive : POL-07 prevoit 90 jours entre la desactivation et la suppression.
+## Code
 
-## Rapport
-`access-report.csv` : username, enabled, source, groups, realm_roles, grafana_roles, api_roles.
+- src/jml.py : CLI Joiner / Mover / Leaver
+- 	ests/test_jml.py : 19 tests unitaires (fausse API Keycloak en mémoire)
+

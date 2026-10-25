@@ -1,15 +1,17 @@
-﻿# Fondamentaux de l'IAM
+﻿# Module 1 : Fondamentaux de l'IAM
 
-Durée estimée : ~3 h
+Duree : ~3 h
 
-## Objectifs
+## Realise
+- [x] Glossaire personnel de 20 termes (IdP, SP, realm, claim, scope, token...)
+- [x] Politique d'acces d'Acme Corp : organigramme, 5 roles, applications, privileges, 11 politiques
+- [x] 5 personas crees avec leurs droits (Karim, Sophie, Lea, Youssef, Nadia)
+- [x] Document "Acme Corp" complet au format PDF
 
-## Tâches
+## Fichiers
+- `glossaire-iam.md` : glossaire des 20 termes
+- `acme-corp-politique-acces.pdf` : document complet (organigramme, roles, matrice d'acces, politiques, personas)
 
-- [ ] Tâche 1
-- [ ] Tâche 2
-- [ ] Tâche 3
-- [ ] Tâche 4
-
-## Notes
-
+## A retenir
+Toute la suite du lab s'appuie sur cette entreprise fictive : les 5 personas et les 6 roles
+(DG, RH, Marketing, Ventes, IT, + employe de base) servent de fil conducteur jusqu'au module 10.
